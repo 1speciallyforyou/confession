@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>A Letter For You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --paper-bg: #fffdf6;
+            --card-width: 820px;
+            --ink: #111217;
+            --accent: #ff6b9a;
+        }
+        html,body{height:100%;margin:0;font-family: 'Special Elite', monospace;background:
+            radial-gradient(1200px 600px at 10% 10%, #fff7fb 0%, transparent 10%),
+            linear-gradient(180deg,#f7eef6 0%, #f6f2ea 60%);
+            -webkit-font-smoothing:antialiased;color:var(--ink);}
+        .wrap{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:env(safe-area-inset-top) 20px env(safe-area-inset-bottom);
+            box-sizing:border-box;
+        }
+        .card{
+            width:100%;
+            max-width:var(--card-width);
+            background: linear-gradient(180deg,var(--paper-bg), #fffefb 60%);
+            border-radius:18px;
+            padding:36px 28px;
+            box-shadow: 0 18px 40px rgba(19,16,25,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+            transform: translateZ(0);
+            position:relative;
+            overflow:hidden;
+            border: 1px solid rgba(10,10,10,0.03);
+        }
+        /* head */
+        .letter-head{
+            display:flex;
+            align-items:center;
+            gap:14px;
+            margin-bottom:6px;
+        }
+        .seal{
+            width:56px;height:56px;border-radius:12px;
+            background:linear-gradient(180deg,var(--accent),#d54b7a);
+            display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+            font-family:'Dancing Script',sans-serif;font-size:22px;box-shadow:0 6px 18px rgba(255,107,154,0.18);
+        }
+        .title{
+            font-family:'Dancing Script',sans-serif;
+            font-size:22px;color:var(--accent);letter-spacing:0.6px;
+        }
+        .meta{font-size:13px;color:#5b5b5b;margin-bottom:18px;}
+        /* paper marks */
+        .paper-lines::before{
+            content:"";
+            position:absolute;inset:0;
+            background-image:
+                linear-gradient(transparent 28px, rgba(0,0,0,0.02) 29px);
+            background-size:100% 30px;
+            pointer-events:none;
+            mix-blend-mode:multiply;opacity:0.55;
+        }
+        /* TEXT AREA */
+        .letter{
+            font-size:18px;line-height:1.6;white-space:pre-wrap;word-break:break-word;
+            color:var(--ink);min-height:260px;
+            font-variant-ligatures:none;letter-spacing:0.2px;padding-right:8px;
+            overflow-y:auto; /* scroll inside the letter on mobile */
+            max-height:60vh;
+        }
+        .cursor{
+            display:inline-block;
+            width:8px;height:22px;background:var(--ink);margin-left:2px;
+            vertical-align:bottom;animation:blink 1s steps(2,end) infinite;
+        }
+        @keyframes blink{50%{opacity:0}}
+        /* actions */
+        .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;}
+        .btn{
+            background:transparent;border:1px solid rgba(17,18,23,0.08);padding:8px 12px;border-radius:10px;font-family:inherit;
+            color:var(--ink);font-size:14px;backdrop-filter: blur(4px);
+        }
+        .btn.primary{background:var(--accent);color:#fff;border:none;box-shadow:0 8px 20px rgba(217,77,123,0.14)}
+        @media (max-width:460px){
+            .card{padding:22px;border-radius:14px;}
+            .letter{font-size:17px;min-height:220px;}
+            .seal{width:48px;height:48px;font-size:20px;border-radius:10px}
+            .title{font-size:20px}
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <section class="card paper-lines" role="main" aria-label="Confession letter">
+            <div class="letter-head">
+                <div class="seal">♥</div>
+                <div>
+                    <div class="title">A Letter — for you</div>
+                    <div class="meta">typed especially for the moments only we experience</div>
+                </div>
+            </div>
+
+            <div id="letter" class="letter" aria-live="polite"></div>
+
+            <div class="actions">
+                <button id="replay" class="btn" title="Rewrite">rewind</button>
+                <button id="fast" class="btn" title="Speed up">speed</button>
+                <button id="pause" class="btn primary" title="Pause/Resume">pause</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const MESSAGE = `To you, only you.
+
+You know, I can count almost a thousand moments where I've debated whether I could really find a term for the word "beautiful".
+I thought, maybe a Bougainvillea? Despite its thorns, it blooms with such a vibrant and resilient beauty. Or perhaps something simple,
+Like the soft glow of a candle in a quiet room, casting dancing shadows that feel like a warm embrace. But none of these quite capture it.
+That is, until now. I never thought you would be the one to suddenly matter to me in life, but here we are. kinda ironic, isn't it?
+
+You are the one that defined that word for me. You are the one that finally made me understand what the word "beautiful" really means.
+I write this, not because I expect you to feel the same, but because I want to be honest about how I feel. I want you to know that you are cherished, not just for the way you look, but for the way you are.
+I am fond of you for the smile I always find myself hoping to see on your face, for the way your eyes light up when you talk about something you love.
+I am drawn to you not by how you look beautiful, but how you're beautiful.
+
+You might ask why I had to write this despite knowing I could get rejected all my efforts going to waste. But, I don't mind. Why?
+It's simply because you are worth the time and effort it took to make this.
+
+In the end, you are you. I am me. Although our fates may not be intertwined as much as I wish they were, I hope you get to read this and know that you are loved, in ways you might not even realize.
+I hope you find happiness in every moment, whether or not I'm a part of it.
+
+Always,
+Someone who sees you.
+`;
+
+        const el = document.getElementById('letter');
+        const replayBtn = document.getElementById('replay');
+        const pauseBtn = document.getElementById('pause');
+        const fastBtn = document.getElementById('fast');
+
+        let i = 0;
+        let paused = false;
+        let speed = 67;
+        let typingTimer = null;
+
+        function reset(){
+            i = 0;
+            clearInterval(typingTimer);
+            el.textContent = '';
+            paused = false;
+            pauseBtn.textContent = 'pause';
+            startTyping();
+        }
+
+        function startTyping(){
+            function step(){
+                if(paused) return;
+                if(i >= MESSAGE.length){
+                    clearInterval(typingTimer);
+                    appendCaret(false);
+                    return;
+                }
+                const ch = MESSAGE[i++];
+                el.textContent += ch;
+
+                // scroll **only inside the letter box** on mobile
+                el.scrollTop = el.scrollHeight;
+
+                let delay = speed;
+                if(ch === '\n') delay = speed * 8;
+                if(/[.,!?]/.test(ch)) delay = speed * 5;
+                clearInterval(typingTimer);
+                typingTimer = setInterval(step, delay);
+            }
+            clearInterval(typingTimer);
+            typingTimer = setInterval(step, speed);
+            appendCaret(true);
+        }
+
+        function appendCaret(on){
+            if(on){
+                if(!el.querySelector('.cursor')) el.insertAdjacentHTML('beforeend','<span class="cursor"></span>');
+            }else{
+                const c = el.querySelector('.cursor'); if(c) c.remove();
+            }
+        }
+
+        // controls
+        replayBtn.addEventListener('click', reset);
+        pauseBtn.addEventListener('click', ()=>{
+            paused = !paused;
+            pauseBtn.textContent = paused ? 'resume' : 'pause';
+            if(!paused && i < MESSAGE.length) startTyping();
+        });
+        fastBtn.addEventListener('click', ()=>{
+            speed = speed === 67 ? 20 : 67;
+            fastBtn.textContent = speed === 20 ? 'slow' : 'speed';
+        });
+
+        // keyboard shortcuts
+        document.addEventListener('keydown', (e)=>{
+            if(e.key.toLowerCase() === 'r') reset();
+            if(e.key.toLowerCase() === ' ') { pauseBtn.click(); e.preventDefault(); }
+        });
+
+        // start automatically
+        setTimeout(()=> startTyping(), 700);
+    </script>
+</body>
+</html>
